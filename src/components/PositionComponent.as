@@ -3,18 +3,22 @@ package components
 	import entities.Entity;
 	public class PositionComponent implements ComponentInterface
 	{
-		public var x:int;
-		public var y:int;
+		public var x:Number;
+		public var y:Number;
 		
-		public function PositionComponent(xStart:int = 0,yStart:int = 0) 
+		public function PositionComponent(xStart:Number = 0,yStart:Number = 0) 
 		{
 			x = xStart;
 			y = yStart;
 		}
 		public function attached(entity:Entity):void
 		{ 
-			//no need to do anything when attached
-			//this component is independent.
+			entity.attachEvent('move', this.move);
+		}
+		public function move(data:Object):void
+		{
+			x += data.dx;
+			y += data.dy;
 		}
 	}
 }

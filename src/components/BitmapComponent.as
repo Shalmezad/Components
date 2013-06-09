@@ -13,11 +13,20 @@ package components
 		public function attached(entity:Entity):void
 		{
 			position = entity.getComponent(PositionComponent) as PositionComponent;
+			Screen.screen.addChild(image);
+			image.visible = false;
 			entity.attachEvent('draw', this.drawImage);
+			entity.attachEvent('update', this.update);
 		}
 		public function drawImage(data:Object):void
 		{
-			Screen.screen.addChild(image);
+			image.visible = true;
+		}
+		public function update(data:Object):void
+		{
+			image.x = position.x;
+			image.y = position.y;
+			image.visible = false;
 		}
 		
 	}
