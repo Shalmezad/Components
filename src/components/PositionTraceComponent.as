@@ -14,7 +14,7 @@ package components
 			position = entity.getComponent(PositionComponent) as PositionComponent;
 			entity.attachEvent('tracePosition', this.tracePosition);
 		}
-		public function tracePosition():void
+		public function tracePosition(data:Object):void
 		{
 			trace("Position x: " + position.x.toString());
 			trace("Position y: " + position.y.toString());

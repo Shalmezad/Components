@@ -22,7 +22,6 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			//addEventListener(Event.ENTER_FRAME, enterFrame);
 			Screen.screen = this;
 			
 			// entry point
@@ -34,6 +33,7 @@ package
 			entity.attachComponent(new BitmapComponent(bm));
 			entity.dispatchEvent('tracePosition', null);
 			entity.dispatchEvent('draw', null);
+			addEventListener(Event.ENTER_FRAME, enterFrame);
 		}
 		
 		private function enterFrame(e:Event = null):void

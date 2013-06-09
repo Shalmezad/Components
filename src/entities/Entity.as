@@ -30,7 +30,7 @@ package entities
 		{
 			for each (var cel:ComponentEventListener in eventListeners) {
 				if (cel.keyword == keyword) {
-					cel.callback();
+					cel.callback(data);
 				}
 			}
 		}

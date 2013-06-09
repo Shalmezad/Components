@@ -15,7 +15,7 @@ package components
 			position = entity.getComponent(PositionComponent) as PositionComponent;
 			entity.attachEvent('draw', this.drawImage);
 		}
-		public function drawImage():void
+		public function drawImage(data:Object):void
 		{
 			Screen.screen.addChild(image);
 		}
