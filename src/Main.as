@@ -1,7 +1,10 @@
 package 
 {
+	import components.BitmapDataComponent;
 	import components.PositionComponent;
 	import components.PositionTraceComponent;
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -27,7 +30,10 @@ package
 			entity = new Entity();
 			entity.attachComponent(new PositionComponent(2,3));
 			entity.attachComponent(new PositionTraceComponent());
+			var bm:BitmapData = (new Assets.SMILEY as Bitmap).bitmapData;
+			entity.attachComponent(new BitmapDataComponent(bm));
 			entity.dispatchEvent('tracePosition', null);
+			entity.dispatchEvent('draw', null);
 		}
 		
 	}
