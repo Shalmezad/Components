@@ -1,5 +1,7 @@
 package 
 {
+	import components.PositionComponent;
+	import components.PositionTraceComponent;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -22,7 +24,9 @@ package
 			
 			
 			var entity:Entity;
-			
+			entity = new Entity();
+			entity.attachComponent(new PositionComponent(2,3));
+			entity.attachComponent(new PositionTraceComponent());
 		}
 		
 	}
