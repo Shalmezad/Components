@@ -1,6 +1,7 @@
 package components 
 {
 	import entities.Entity;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	public class BitmapDataComponent implements ComponentInterface
 	{
@@ -17,6 +18,7 @@ package components
 		}
 		public function drawImage() :void
 		{
+			Screen.screen.addChild(new Bitmap(image));
 			//Screen.copyPixels(image,position.x,position.y,image.width,image.height); //Draw the image according to the position coordinates.
 		}
 		

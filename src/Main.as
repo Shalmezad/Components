@@ -1,6 +1,6 @@
 package 
 {
-	import components.BitmapDataComponent;
+	import components.BitmapComponent;
 	import components.PositionComponent;
 	import components.PositionTraceComponent;
 	import flash.display.Bitmap;
@@ -13,7 +13,6 @@ package
 	
 	public class Main extends Sprite 
 	{
-		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -23,19 +22,24 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			//addEventListener(Event.ENTER_FRAME, enterFrame);
+			Screen.screen = this;
+			
 			// entry point
-			
-			
 			var entity:Entity;
 			entity = new Entity();
 			entity.attachComponent(new PositionComponent(2,3));
 			entity.attachComponent(new PositionTraceComponent());
-			var bm:BitmapData = (new Assets.SMILEY as Bitmap).bitmapData;
-			entity.attachComponent(new BitmapDataComponent(bm));
+			var bm:Bitmap = (new Assets.SMILEY as Bitmap);
+			entity.attachComponent(new BitmapComponent(bm));
 			entity.dispatchEvent('tracePosition', null);
 			entity.dispatchEvent('draw', null);
 		}
 		
+		private function enterFrame(e:Event = null):void
+		{
+			
+		}
 	}
 	
 }
