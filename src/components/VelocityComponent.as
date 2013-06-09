@@ -5,7 +5,7 @@ package components
 	{
 		public var xVel:Number;
 		public var yVel:Number;
-		public var position:PositionComponent;
+		private var _entity:Entity;
 		public function VelocityComponent(xV:Number = 0, yV:Number = 0) 
 		{
 			xVel = xV;
@@ -13,13 +13,12 @@ package components
 		}
 		public function attached(entity:Entity):void
 		{ 
-			position = entity.getComponent(PositionComponent) as PositionComponent;
 			entity.attachEvent('update', this.update);
+			_entity = entity;
 		}
 		public function update(data:Object):void
 		{
-			position.x += xVel;
-			position.y += yVel;
+			_entity.dispatchEvent('move', { dx:xVel, dy:yVel } );
 		}
 		
 	}

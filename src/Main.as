@@ -16,7 +16,7 @@ package
 	
 	public class Main extends Sprite 
 	{
-		private var entity:Entity;
+		private var player:Entity;
 		public function Main():void 
 		{
 			if (stage) init();
@@ -29,16 +29,16 @@ package
 			Screen.screen = this;
 			
 			// entry point
-			entity = new Entity();
-			entity.attachComponent(new PositionComponent(100,100));
-			entity.attachComponent(new PositionTraceComponent());
-			var bm:Bitmap = (new Assets.SMILEY as Bitmap);
-			entity.attachComponent(new BitmapComponent(bm));
-			entity.attachComponent(new VelocityComponent());
-			entity.attachComponent(new PlayerMovementComponent());
-			entity.dispatchEvent('tracePosition', null);
-			entity.dispatchEvent('draw', null);
-			entity.dispatchEvent('update', null);
+			player = new Entity();
+			player.attachComponent(new PositionComponent(100,100));
+			player.attachComponent(new PositionTraceComponent());
+			var bm:Bitmap = (new Assets.G_SMILEY as Bitmap);
+			player.attachComponent(new BitmapComponent(bm));
+			player.attachComponent(new VelocityComponent());
+			player.attachComponent(new PlayerMovementComponent());
+			player.dispatchEvent('tracePosition', null);
+			player.dispatchEvent('draw', null);
+			player.dispatchEvent('update', null);
 			addEventListener(Event.ENTER_FRAME, enterFrame);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyHandleUp);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyHandleDown);
@@ -46,9 +46,9 @@ package
 		
 		private function enterFrame(e:Event = null):void
 		{
-			entity.dispatchEvent('update', null);
-			entity.dispatchEvent('draw', null);
-			entity.dispatchEvent('tracePosition', null);
+			player.dispatchEvent('update', null);
+			player.dispatchEvent('draw', null);
+			player.dispatchEvent('tracePosition', null);
 		}
 
 		public static var hash:Object = {};

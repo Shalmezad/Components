@@ -17,14 +17,17 @@ package components
 		
 		public function update(data:Object):void
 		{
-			if( Main.isKeyDown(37) ) { 
-			  velocity.xVel = -3; 
+			if ( Main.isKeyDown(37) ) { 
+				//Left
+				velocity.xVel = -3; 
 			}
-			else if( Main.isKeyDown(39) ) { 
-			  velocity.xVel = 3; 
+			else if ( Main.isKeyDown(39) ) { 
+				//Right
+				velocity.xVel = 3; 
 			}
 			else {
-			  velocity.xVel = 0; 
+				//No xVel
+				velocity.xVel = 0; 
 			}
 		}
 		
