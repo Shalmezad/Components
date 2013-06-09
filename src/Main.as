@@ -3,6 +3,8 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
+	import entities.Entity;
+	
 	
 	public class Main extends Sprite 
 	{
@@ -17,6 +19,10 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			
+			
+			var entity:Entity;
+			
 		}
 		
 	}
