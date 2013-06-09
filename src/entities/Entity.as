@@ -4,14 +4,15 @@ package entities
 	public class Entity 
 	{
 		public var activeComponents:Array; 
+		public var eventListeners:Array;
 		public function Entity()
 		{
 			activeComponents = new Array();
+			eventListeners = new Array();
 		}
 		public function attachComponent(component:ComponentInterface):void
 		{
 			//add the component to the list
-			//TODO: Add component to component array
 			activeComponents.push(component);
 			//call the components attached() 
 			component.attached(this);
@@ -27,12 +28,22 @@ package entities
 		}
 		public function dispatchEvent(keyword:String, data:Object):void
 		{
-			
+			for each (var cel:ComponentEventListener in eventListeners) {
+				if (cel.keyword == keyword) {
+					cel.callback();
+				}
+			}
 		}
 		public function attachEvent(keyword:String, callback:Function, priority:int = 0):void
 		{
-			
+			var cel:ComponentEventListener;
+			cel = new ComponentEventListener();
+			cel.keyword = keyword;
+			cel.callback = callback;
+			eventListeners.push(cel);
 		}
 	}
+	
+
 
 }

@@ -27,6 +27,7 @@ package
 			entity = new Entity();
 			entity.attachComponent(new PositionComponent(2,3));
 			entity.attachComponent(new PositionTraceComponent());
+			entity.dispatchEvent('tracePosition', null);
 		}
 		
 	}

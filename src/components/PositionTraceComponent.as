@@ -12,9 +12,12 @@ package components
 		public function attached(entity:Entity):void
 		{ 
 			position = entity.getComponent(PositionComponent) as PositionComponent;
+			entity.attachEvent('tracePosition', this.tracePosition);
+		}
+		public function tracePosition():void
+		{
 			trace("Position x: " + position.x.toString());
 			trace("Position y: " + position.y.toString());
-			
 		}
 	}
 
